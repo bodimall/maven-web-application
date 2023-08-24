@@ -6,9 +6,10 @@ pipeline{
 options {
   buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '5', daysToKeepStr: '', numToKeepStr: '5')
 }
-
-
-
+parameters {
+  choice choices: ['master', 'development', 'uat ', 'qa'], description: 'select the branch name', name: 'BranchName'
+  string defaultValue: 'devops', description: 'change the default coursename', name: 'coursename'
+}
     stages{
         stage('checkout'){
             steps{
